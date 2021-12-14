@@ -1,0 +1,19 @@
+.order_details {
+  .buyer_details_text_wrapper {
+    border-left: 1px solid $lightGray;
+    border-right: 1px solid $lightGray;
+    border-top: 1px solid $darkgreen;
+    border-bottom: 1px solid $green;
+  }
+  .order_detail_text_wrapper {
+    color: $green;
+  }
+  .buyer_details:nth-of-type(odd) {
+    background-color: $lightGray;
+  }
+  .total_price_wrapper {
+    color: $green;
+    font-weight: bold;
+    font-size: 19px;
+  }
+}
