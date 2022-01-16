@@ -2,11 +2,17 @@
 import * as React from 'react';
 import { useParams, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { OrderListComponent } from '@/components/page-components/order-list';
 import { Row, Col } from 'react-bootstrap';
 import { useLoadingContext } from '@/contexts/loading-context';
 import { useGetAllOrders } from '@/queries/paginated/use-get-all-orders';
-import { UIContainer, CreditPaymentType, IOrder, TOrderStatus, twoDigit } from '@onlineplasiyer/op-web-fronted';
+import {
+  OrderListComponent,
+  UIContainer,
+  CreditPaymentType,
+  IOrder,
+  TOrderStatus,
+  twoDigit,
+} from '@onlineplasiyer/op-web-fronted';
 import { useUpdateOrderMutation } from '@/queries/mutations/use-update-order';
 
 /*
@@ -106,6 +112,9 @@ const OrdersPage: React.SFC<OrdersPageProps> = props => {
               handlePdfBtnClick={handlePdfBtnClick}
               onPageChange={onChangePage}
               showFinishedButton
+              showCustomerName
+              showMerchantName
+              showshowUpdatePopup
               onOrderUpdated={(
                 id: string,
                 paidPrice?: number,

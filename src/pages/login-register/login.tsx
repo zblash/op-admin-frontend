@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import { Loading, UILink, UIInput, PasswordInput } from '@onlineplasiyer/op-web-fronted';
-import { LoginInputType, useMerchantLoginMutation } from '@/queries/mutations/auth/use-merchant-login';
+import { LoginInputType, useAdminLoginMutation } from '@/queries/mutations/auth/use-admin-login';
 
 import { Button } from 'react-bootstrap';
 /*
@@ -20,7 +20,7 @@ interface LoginComponentProps {}
   LoginComponent Styles
 */
 const LoginComponent: React.SFC<LoginComponentProps> = () => {
-  const { mutate: login, isLoading } = useMerchantLoginMutation();
+  const { mutate: login, isLoading } = useAdminLoginMutation();
   const {
     register,
     handleSubmit,

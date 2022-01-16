@@ -22,7 +22,7 @@ const ProductSpecifiesPage = React.lazy(() =>
   })),
 );
 const MerchantHome = React.lazy(() =>
-  import('./merchant-home/index').then(module => ({
+  import('./admin-home/index').then(module => ({
     default: module.MerchantHome,
   })),
 );

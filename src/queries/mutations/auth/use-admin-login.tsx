@@ -8,13 +8,13 @@ export interface LoginInputType {
   password: string;
 }
 async function login(input: LoginInputType) {
-  return mutationEndPoints.merchantLogin({
+  return mutationEndPoints.adminLogin({
     username: input.username,
     password: input.password,
   });
 }
 
-export const useMerchantLoginMutation = () => {
+export const useAdminLoginMutation = () => {
   const { authenticate } = useAuth();
   const { t } = useTranslation();
   const alert = useAlert();

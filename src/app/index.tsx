@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { useIsFetching } from 'react-query';
 import { ToastContainer } from 'react-toastify';
 import Routes from '@/pages';
-import { FullScreenLoading } from '@onlineplasiyer/op-web-fronted';
+import { FullScreenLoading, searchQueryKeys } from '@onlineplasiyer/op-web-fronted';
 import { css } from '@/styled';
 import { LoadingContext } from '@/contexts/loading-context';
 import { AuthProvider } from '@/contexts/auth-context';
@@ -15,14 +15,15 @@ const opacityLoading = css`
 function App() {
   const [loading, setLoading] = React.useState(false);
   const isFetching = useIsFetching();
+  const isSearchFetching = useIsFetching(searchQueryKeys.all);
 
   React.useEffect(() => {
-    if (isFetching > 0) {
+    if (isFetching - isSearchFetching > 0) {
       setLoading(true);
     } else {
       setLoading(false);
     }
-  }, [isFetching]);
+  }, [isFetching, isSearchFetching]);
 
   return (
     <BrowserRouter>

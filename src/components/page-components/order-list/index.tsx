@@ -74,6 +74,10 @@ function OrderListComponent(props: React.PropsWithChildren<OrderListComponentPro
             accessor: 'buyerName',
           },
           {
+            Header: t('common.merchant'),
+            accessor: 'merchant.merchantName',
+          },
+          {
             Header: t('order.order-date'),
             accessor: 'orderDate',
           },
