@@ -1,61 +1,54 @@
 import * as React from 'react';
 import { ObligationComponent } from '@/components/page-components/obligation';
-import { AnnouncementComponent, UIContainer, DaysOfWeek, SearchComponent } from '@onlineplasiyer/op-web-fronted';
-import { useGetOrderSummary } from '@/queries/use-get-order-summary';
-import { useGetAnnouncements } from '@/queries/use-get-announcements';
-import { useGetObligationTotal } from '@/queries/use-get-obligation-total';
-import { useGetShippingDays } from '@/queries/use-get-shipping-days';
-import { ShippingDaysComponent } from '@/components/page-components/shipping-days';
-import { useGetStatesForShippingDays } from '@/queries/use-get-states-for-shipping-days';
-import { useAddShippingDays } from '@/queries/mutations/use-add-shipping-days';
-import { useEditShippingDays } from '@/queries/mutations/use-edit-shipping-days';
-import { OrdersSummaryComponent } from '@/components/page-components/orders-summary';
-import { Row, Col } from 'react-bootstrap';
-import { useGetSearchCustomers } from '@/queries/use-search-customer';
+import { AnnouncementComponent, UIContainer, DaysOfWeek, SearchComponent } from '@zblash/op-web-fronted';
+import DatePicker from 'react-datepicker';
+import styled, { css } from 'styled-components';
 
-/* MerchantHome Helpers */
-interface MerchantHomeProps {}
+/* AdminHome Helpers */
+interface AdminHomeProps {}
 
-/* MerchantHome Constants */
+/* AdminHome Constants */
+const StyledDatePickerWrapper = styled.div`
+  .datePickerInput {
+    width: 100%;
+    min-height: 38px;
+    height: calc(1.5 em + 0.75 rem + 2 px);
+    padding: 0.375 rem 0.75 rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #1d1d1d;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 1px solid #dee2e6;
+    border-radius: 0;
+  }
+  .react-datepicker__close-icon::after {
+    background-color: red;
+  }
+`;
 
-/* MerchantHome Styles */
+/* AdminHome Styles */
 
-/* MerchantHome Component  */
-function MerchantHome(props: React.PropsWithChildren<MerchantHomeProps>) {
-  /* MerchantHome Variables */
-  const [customerName, setCustomerName] = React.useState('');
-  const [isSearching, setIsSearching] = React.useState(false);
-  const { data: searchCustomers, isLoading, error } = useGetSearchCustomers(customerName, isSearching);
-
-  /* MerchantHome Callbacks */
-  const onSearchType = React.useCallback((e: string) => {
-    setCustomerName(e);
-    setIsSearching(true);
+/* AdminHome Component  */
+function AdminHome(props: React.PropsWithChildren<AdminHomeProps>) {
+  /* AdminHome Variables */
+  const [startDate, setStartDate] = React.useState<Date>(new Date());
+  const [endDate, setEndDate] = React.useState<Date>(new Date());
+  /* AdminHome Callbacks */
+  const onDatesChanged = React.useCallback(dates => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
   }, []);
-  /* MerchantHome Lifecycle  */
+  /* AdminHome Lifecycle  */
 
   return (
     <>
-      {!error && (
-        <UIContainer>
-          <SearchComponent
-            inputName="customer-name-search"
-            labelKey="Musteri"
-            searchKey={customerName}
-            onTypeCallback={onSearchType}
-            resultList={[
-              { id: '1', key: 'deneme' },
-              { id: '2', key: 'deneme' },
-              { id: '3', key: 'deneme' },
-              { id: '4', key: 'deneme' },
-              { id: '5', key: 'deneme' },
-            ]}
-          />
-        </UIContainer>
-      )}
+      <UIContainer></UIContainer>
     </>
   );
 }
-const PureMerchantHome = React.memo(MerchantHome);
+const PureAdminHome = React.memo(AdminHome);
 
-export { PureMerchantHome as MerchantHome };
+export { PureAdminHome as AdminHome };

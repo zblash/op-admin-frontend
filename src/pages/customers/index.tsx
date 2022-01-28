@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useHistory } from 'react-router';
-import { UIContainer, UITableComponent, IUserCommonResponse } from '@onlineplasiyer/op-web-fronted';
+import { UIContainer, UITableComponent, IUserCommonResponse } from '@zblash/op-web-fronted';
 import { Row, Col, Button } from 'react-bootstrap';
 import { useGetAllCustomers } from '@/queries/paginated/use-get-all-users';
 
@@ -24,7 +24,7 @@ function CustomersPage(props: React.PropsWithChildren<CustomersPageProps>) {
   /* CustomersPage Callbacks */
   const handleUser = React.useCallback(
     (username: string, id: string) => {
-      routerHistory.push(`/merchant/customer/${username}/${id}`);
+      routerHistory.push(`/customer/${username}/${id}`);
     },
     [routerHistory],
   );

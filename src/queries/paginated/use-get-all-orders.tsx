@@ -1,11 +1,14 @@
 import { useQuery } from 'react-query';
 import { useTranslation } from 'react-i18next';
-import { IExceptionResponse, TOrderStatus, paginatedQueryEndpoints, useAlert } from '@onlineplasiyer/op-web-fronted';
+import { IExceptionResponse, TOrderStatus, paginatedQueryEndpoints, useAlert } from '@zblash/op-web-fronted';
 
 export interface UseGetAllOrdersProps {
-  userId?: string;
-  userName?: string;
+  customerId?: string;
+  customerName?: string;
+  merchantId?: string;
+  merchantName?: string;
   startDate?: string;
+  endDate?: string;
   pageNumber: number;
   sortBy?: string;
   sortType?: string;
@@ -21,7 +24,7 @@ export const useGetAllOrders = (s: UseGetAllOrdersProps) => {
   const { t } = useTranslation();
 
   return useQuery(
-    ['all-orders', s.pageNumber, s.sortBy, s.sortType, s.userId, s.userName, s.startDate, s.status],
+    ['all-orders', s.pageNumber, s.sortBy, s.sortType, s.customerId, s.merchantId, s.startDate, s.endDate, s.status],
     () => getAllOrders(s),
     {
       onError: (error: IExceptionResponse) => {

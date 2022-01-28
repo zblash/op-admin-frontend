@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { UILink, UIOutlineDownIcon } from '@onlineplasiyer/op-web-fronted';
+import { UILink, UIOutlineDownIcon } from '@zblash/op-web-fronted';
 import { Container, Row, Col } from 'react-bootstrap';
 import Logo from '@/assets/images/logo/flogo.png';
 /* HeaderMenu Helpers */
@@ -31,7 +31,7 @@ function HeaderMenu() {
                 <UILink to="/merchant/home">ANASAYFA</UILink>
               </li>
               <li>
-                <UILink to="/merchant/customers">SİSTEMDEKİ MÜŞTERİLER</UILink>
+                <UILink to="/customers">SİSTEMDEKİ MÜŞTERİLER</UILink>
               </li>
               <li>
                 <UILink to="">
@@ -40,10 +40,10 @@ function HeaderMenu() {
                 <div className="menu_option">
                   <ul>
                     <li>
-                      <UILink to="/product-specifies">Tüm Ürünler</UILink>
+                      <UILink to="/product">Tüm Ürünler</UILink>
                     </li>
                     <li>
-                      <UILink to="/add-product-specify">Yeni Urun Ekle</UILink>
+                      <UILink to="/add-product">Yeni Urun Ekle</UILink>
                     </li>
                   </ul>
                 </div>

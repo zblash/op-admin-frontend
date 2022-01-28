@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Header } from '@/components/common/header/index';
-import { FullScreenLoading, Footer } from '@onlineplasiyer/op-web-fronted';
+import { FullScreenLoading, Footer } from '@zblash/op-web-fronted';
 import { css } from '@/styled';
 import { LoginRegisterPage } from './login-register';
 
@@ -16,14 +16,19 @@ const CreateProductSpecifyPage = React.lazy(() =>
     default: module.CreateProductSpecifyPage,
   })),
 );
+const ProductsPage = React.lazy(() =>
+  import('./products/index').then(module => ({
+    default: module.ProductsPage,
+  })),
+);
 const ProductSpecifiesPage = React.lazy(() =>
   import('./product-specifies/index').then(module => ({
     default: module.ProductSpecifiesPage,
   })),
 );
-const MerchantHome = React.lazy(() =>
+const AdminHome = React.lazy(() =>
   import('./admin-home/index').then(module => ({
-    default: module.MerchantHome,
+    default: module.AdminHome,
   })),
 );
 
@@ -75,7 +80,7 @@ interface IRoute {
 }
 
 export const RoutesList: IRoute[] = [
-  { path: '/', basePath: '/', component: MerchantHome, isPrivate: true },
+  { path: '/', basePath: '/', component: AdminHome, isPrivate: true },
   { path: '/create-ticket', basePath: '/create-ticket', component: CreateTicketPage, isPrivate: true },
   { path: '/credit-activities', basePath: '/credit-activities', component: CreditActivities, isPrivate: true },
   { path: '/orders/:userId?', basePath: '/orders', component: OrdersPage, isPrivate: true },
@@ -88,9 +93,8 @@ export const RoutesList: IRoute[] = [
     component: CustomerProfilePage,
     isPrivate: true,
   },
-  { path: '/merchant/customers', basePath: '/merchant/customers', component: CustomersPage, isPrivate: true },
+  { path: '/customers', basePath: '/customers', component: CustomersPage, isPrivate: true },
   { path: '/merchant/credits', basePath: '/merchant/credits', component: MerchantCreditsPage, isPrivate: true },
-  { path: '/merchant/home', basePath: '/merchant/home', component: MerchantHome, isPrivate: true },
 
   {
     path: '/add-product-specify',
@@ -105,6 +109,7 @@ export const RoutesList: IRoute[] = [
     isPrivate: true,
   },
   { path: '/product-specifies', basePath: '/product-specifies', component: ProductSpecifiesPage, isPrivate: true },
+  { path: '/products', basePath: '/products', component: ProductsPage, isPrivate: true },
   {
     path: '/obligation-activities/:userId?',
     basePath: '/obligation-activities',
